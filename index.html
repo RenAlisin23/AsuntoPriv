@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mirella ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 25%, #22d3ee 50%, #a78bfa 75%, #c084fc 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 20s infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 3.5rem 3rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.5);
+            text-align: center;
+            max-width: 650px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0891b2, #06b6d4, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            margin: 2.5rem 0;
+        }
+
+        .question {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .poetry {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #475569;
+            line-height: 1.8;
+            margin: 2rem auto;
+            padding: 2rem;
+            max-width: 500px;
+            position: relative;
+            font-style: italic;
+        }
+
+        .poetry::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 5rem;
+            color: #06b6d4;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .author {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 3rem 0 2rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 1.3rem 3.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        button:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: white;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
+        }
+
+        .no-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .success-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(167, 139, 250, 0.1));
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            animation: fadeInScale 0.5s ease;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .success-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0891b2, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .success-text {
+            font-size: 1.2rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-top: 1rem;
+        }
+
+        .highlight {
+            color: #0891b2;
+            font-weight: 600;
+        }
+
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin: 1rem 0;
+            display: inline-block;
+            animation: float-icon 3s ease-in-out infinite;
+        }
+
+        @keyframes float-icon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bear-container {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .bear {
+            font-size: 6rem;
+            display: inline-block;
+            animation: bear-wave 2s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes bear-wave {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-10deg) scale(1.05); }
+            75% { transform: rotate(10deg) scale(1.05); }
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: heart-rise 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes heart-rise {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+
+        .romantic-verse {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(167, 139, 250, 0.05));
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 3px solid #06b6d4;
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.8;
+            font-style: italic;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            animation: drift 15s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% {
+                transform: translate(50px, -100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 2.5rem 1.8rem;
+            }
+
+            .name {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .question {
+                font-size: 1.5rem;
+            }
+
+            .poetry {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+
+            button {
+                padding: 1.1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+
+            .icon {
+                font-size: 3rem;
+            }
+
+            .success-title {
+                font-size: 2rem;
+            }
+
+            .success-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="celebration" id="celebration"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="name">Mirella</div>
+            <div class="subtitle">Una pregunta importante</div>
+        </div>
+
+        <div class="content">
+            <div class="bear-container">
+                <div class="bear" id="bear">🧸</div>
+                <div class="heart-float" style="left: 30%; animation-delay: 0s;">💙</div>
+                <div class="heart-float" style="left: 50%; animation-delay: 0.5s;">💜</div>
+                <div class="heart-float" style="right: 30%; animation-delay: 1s;">💙</div>
+            </div>
+
+            <h1 class="question" id="question">
+                ¿Quieres ser mi San Valentín?
+            </h1>
+
+            <div class="romantic-verse" id="verse">
+                Eres el sol que ilumina mis días,<br>
+                la luna que acompaña mis noches.
+            </div>
+
+            <div class="poetry" id="poetry">
+                Me gustas cuando callas porque estás como ausente,<br>
+                y me oyes desde lejos, y mi voz no te toca.
+                <div class="author">— Pablo Neruda</div>
+            </div>
+
+            <div class="buttons" id="buttons">
+                <button class="yes-btn" onclick="handleYes()">Sí, quiero</button>
+                <button class="no-btn" id="noBtn" onclick="handleNo()">Mejor no</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <script>
+        // Crear partículas de fondo
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for(let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Crear corazones flotantes
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingElements');
+            const hearts = ['💙', '💜', '💗', '💖'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+                heart.style.animationDuration = (12 + Math.random() * 8) + 's';
+                container.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 20000);
+            }, 1000);
+        }
+
+        createFloatingHearts();
+
+        // Versos románticos
+        const romanticVerses = [
+            "Contigo descubrí que el amor<br>no se busca, se encuentra.",
+            "Eres la respuesta a preguntas<br>que nunca supe formular.",
+            "En tus ojos veo el futuro<br>que siempre quise vivir.",
+            "Cada momento contigo<br>es un verso que no quiero olvidar.",
+            "Eres mi lugar favorito,<br>mi hogar en medio del caos.",
+            "Contigo el tiempo se detiene<br>y el mundo cobra sentido.",
+            "No necesito el cielo,<br>lo encuentro cada vez que sonríes.",
+            "Eres la melodía que mi alma<br>siempre quiso cantar."
+        ];
+
+        // Mensajes de Neruda y otros poetas
+        const nerudaQuotes = [
+            {
+                text: "Puedo escribir los versos más tristes esta noche...<br>Pero prefiero escribir sobre lo feliz que me harías.",
+                author: "— Neruda (adaptado)"
+            },
+            {
+                text: "Es tan corto el amor, y es tan largo el olvido.<br>No dejemos que este momento pase de largo.",
+                author: "— Pablo Neruda"
+            },
+            {
+                text: "Te amo sin saber cómo, ni cuándo, ni de dónde.<br>Solo sé que quiero pasar este día contigo.",
+                author: "— Pablo Neruda (adaptado)"
+            },
+            {
+                text: "Quiero hacer contigo<br>lo que la primavera hace con los cerezos.",
+                author: "— Pablo Neruda"
+            },
+            {
+                text: "Me faltas cuando no estás.<br>Te extraño aunque estés cerca.",
+                author: "— Inspirado en Neruda"
+            },
+            {
+                text: "Amor, ahora nos vamos a la casa<br>donde la enredadera sube por las escaleras.",
+                author: "— Pablo Neruda"
+            },
+            {
+                text: "Cien sonetos de amor no bastan<br>para decirte todo lo que siento.",
+                author: "— Inspirado en Neruda"
+            },
+            {
+                text: "Yo te he nombrado reina.<br>Hay más altas que tú, pero tú eres mi reina.",
+                author: "— Pablo Neruda (adaptado)"
+            }
+        ];
+
+        const noButtonTexts = [
+            "¿Segura?",
+            "Piénsalo bien",
+            "Dale una oportunidad",
+            "Solo di que sí",
+            "Vamos, Mirella",
+            "Una última oportunidad",
+            "Por favor"
+        ];
+
+        let clickCount = 0;
+
+        function handleNo() {
+            clickCount++;
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.querySelector('.yes-btn');
+            const poetry = document.getElementById('poetry');
+            const verse = document.getElementById('verse');
+            const bear = document.getElementById('bear');
+
+            if(clickCount <= noButtonTexts.length) {
+                // Cambiar texto del botón
+                noBtn.textContent = noButtonTexts[clickCount - 1];
+                
+                // Osito triste
+                if(clickCount % 2 === 0) {
+                    bear.textContent = '🥺';
+                    setTimeout(() => bear.textContent = '🧸', 1000);
+                }
+                
+                // Cambiar verso romántico
+                if(clickCount <= romanticVerses.length) {
+                    verse.innerHTML = romanticVerses[clickCount - 1];
+                }
+                
+                // Cambiar poesía
+                if(clickCount <= nerudaQuotes.length) {
+                    const quote = nerudaQuotes[clickCount - 1];
+                    poetry.innerHTML = `
+                        ${quote.text}
+                        <div class="author">${quote.author}</div>
+                    `;
+                }
+                
+                // Hacer crecer el botón "Sí"
+                yesBtn.style.transform = `scale(${1 + clickCount * 0.1})`;
+                
+                // Mover el botón "No"
+                const randomX = Math.random() * 60 - 30;
+                const randomY = Math.random() * 60 - 30;
+                noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${1 - clickCount * 0.07})`;
+                noBtn.style.opacity = Math.max(0.4, 1 - clickCount * 0.1);
+            } else {
+                handleYes();
+            }
+        }
+
+        function handleYes() {
+            const bear = document.getElementById('bear');
+            const question = document.getElementById('question');
+            const poetry = document.getElementById('poetry');
+            const verse = document.getElementById('verse');
+            const buttons = document.getElementById('buttons');
+
+            bear.textContent = '🎉';
+            bear.style.animation = 'bear-celebrate 0.5s ease-in-out infinite';
+            
+            // Agregar animación de celebración al osito
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes bear-celebrate {
+                    0%, 100% { transform: rotate(-15deg) scale(1.2); }
+                    50% { transform: rotate(15deg) scale(1.3); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            question.textContent = 'Sabía que dirías que sí';
+
+            verse.innerHTML = "Este es el comienzo de<br>algo maravilloso, Mirella.";
+
+            poetry.innerHTML = `
+                Ahora somos tú y yo.<br>
+                Y el mundo es un poco más bonito.
+                <div class="author">— Una promesa</div>
+            `;
+
+            buttons.innerHTML = `
+                <div class="success-card">
+                    <div class="success-title">¡Perfecto! 💙</div>
+                    <p class="success-text">
+                        Me haces muy feliz.<br>
+                        Prepárate para <span class="highlight">un día increíble</span>.
+                    </p>
+                    <div style="margin-top: 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; color: #64748b;">
+                        "Para que nada nos separe,<br>que no nos una nada."
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: #94a3b8; font-style: normal; font-family: 'Poppins';">
+                            — Pablo Neruda
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Celebración con confetti
+            const celebration = document.getElementById('celebration');
+            celebration.style.display = 'block';
+
+            const colors = ['#06b6d4', '#0891b2', '#22d3ee', '#a78bfa', '#c084fc', '#60a5fa'];
+
+            for(let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.2 + 's';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                    confetti.style.width = (8 + Math.random() * 6) + 'px';
+                    confetti.style.height = confetti.style.width;
+                    celebration.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 15);
+            }
+
+            // Más corazones flotantes en celebración
+            for(let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = ['💙', '💜', '💗'][Math.floor(Math.random() * 3)];
+                    heart.style.position = 'fixed';
+                    heart.style.fontSize = '2rem';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 100 + '%';
+                    heart.style.zIndex = '999';
+                    heart.style.animation = 'float-icon 2s ease-in-out infinite';
+                    heart.style.pointerEvents = 'none';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
